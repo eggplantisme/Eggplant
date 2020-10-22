@@ -1,0 +1,21 @@
+#chat-log {
+    height: 100vw;
+}
+textarea {
+    resize: none;
+}
+#chat-message-submit {
+    height: 53px;
+}
+.msg {
+    background-color: #8BF90F;
+    border-radius: 3px;
+    padding: 3px;
+    margin:2px;
+}
+.user {
+    background-color: #FF9680;
+    border-radius: 3px;
+    padding: 3px;
+    margin:2px;
+}

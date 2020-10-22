@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #000;
+}
+a {
+    text-decoration: none; /*去除下划线*/
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);  /*居中*/
+    font-size: 24px;  /*放大字体*/
+    background: linear-gradient(90deg, #F30021, #FFB600, #162EAE, #F30021);  /*背景*/
+    background-size: 400%;
+    width: 400px;
+    height: 100px;  /*放大整体*/
+    color: #FFF;  /*字体颜色*/
+    line-height: 100px;
+    text-align: center;  /*字体居中*/
+    text-transform: uppercase;  /*字体大写*/
+    border-radius: 50px;  /*圆角*/
+}
+a::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    top: -5px;
+    bottom: -5px;
+    background: linear-gradient(90deg, #F30021, #FFB600, #162EAE, #F30021);  /*背景*/
+    background-size: 400%;
+    border-radius: 50px;  /*圆角*/
+    filter: blur(20px);
+    z-index: -1;
+    visibility: hidden;
+}
+a:hover::before {
+    visibility: visible;
+    animation: sun 8s infinite;
+}
+a:hover {
+    animation: sun 8s infinite;
+}
+@keyframes sun {
+    100% {
+        background-position: -400% 0;
+    }
+}

@@ -1,0 +1,86 @@
+/*
+ * Background
+ */
+ .site-wrapper {
+    background-image: url('../images/background.jpg');
+ }
+ #background {
+    position: absolute;
+    z-index: -2;
+ }
+/*
+ * Cover
+ */
+
+.cover {
+  position: fixed;
+  left: 40%;
+  top: 40%;
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+@media (min-width: 768px) {
+  /* Pull out the header*/
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+}
+/* Button 样式 */
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #000;
+}
+#center_button {
+    text-decoration: none; /*去除下划线*/
+    position: absolute;
+    left: 50%;
+    top: 120%;
+    transform: translate(-50%, -50%);  /*居中*/
+    font-size: 24px;  /*放大字体*/
+    background: linear-gradient(90deg, #F30021, #FFB600, #162EAE, #F30021);  /*背景*/
+    background-size: 400%;
+    width: 200px;
+    height: 60px;  /*放大整体*/
+    color: #FFF;  /*字体颜色*/
+    line-height: 40px;
+    text-align: center;  /*字体居中*/
+    text-transform: uppercase;  /*字体大写*/
+    border-radius: 50px;  /*圆角*/
+}
+#center_button::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    top: -5px;
+    bottom: -5px;
+    background: linear-gradient(90deg, #F30021, #FFB600, #162EAE, #F30021);  /*背景*/
+    background-size: 400%;
+    border-radius: 50px;  /*圆角*/
+    filter: blur(20px);
+    z-index: -1;
+    visibility: hidden;
+}
+#center_button:hover::before {
+    visibility: visible;
+    animation: sun 8s infinite;
+}
+#center_button:hover {
+    animation: sun 8s infinite;
+}
+@keyframes sun {
+    100% {
+        background-position: -400% 0;
+    }
+}

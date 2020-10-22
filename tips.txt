@@ -1,0 +1,13 @@
+python -m venv .\venv  # 创建虚拟环境
+-i https://pypi.tuna.tsinghua.edu.cn/simple  # 清华大学镜像源
+django-admin startproject mysite  # 新建django项目
+python manage.py startapp polls  # 新建django App
+
+admin name: admin
+admin pass: eggplant
+
+pip install channels -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install channels_redis -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+docker pull redis:latest # 安装redis
+docker run -p 6379:6379 -d redis # 在docker上运行redis

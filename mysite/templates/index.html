@@ -1,0 +1,48 @@
+{%extends "base.html" %}
+{% block css_js_reference %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/cover.css' %}" />
+    <!-- <script src="{% static 'js/index.js' %}"></script> 尝试添加动态背景-->
+{% endblock %}
+{% block mainbody %}
+<div class="site-wrapper" id="jsi-particle-container">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Eggplant</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="{% url 'blog:index' %}">Blog</a></li>
+                            <li><a href="{% url 'tool:tool' %}">Tools</a></li>
+                            <li><a href="{% url 'about' %}">About</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="inner cover">
+                <h1 class="cover-heading">Eggplant's World.</h1>
+                <p class="lead">Today is a proper day.</p>
+                <p class="lead">
+                    <a href="{% url 'chat:index' %}" class="btn btn-lg btn-default" id="center_button">Chat</a>
+                </p>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>@Eggplant</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block mainbody %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/gradient_background.css' %}">
+<div class="container">
+    <div class="row" style="padding-top: 100px">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="panel panel-info" style="padding: 8px">
+                <div class="panel-heading">
+                    <h3 class="panel-title">登录</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" action="/login/?from_page={{ request.GET.from_page }}" method="POST">
+                        {% csrf_token %}
+                        <p id="msg" class="text-danger"></p>
+                        <div class="form-group">
+                            <label for="id_username">用户名 </label>
+                            <input name="username" class="form-control" placeholder="请输入用户名" required="" id="id_username" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="id_password">密码 </label>
+                            <input name="password" class="form-control" placeholder="请输入密码" required="" id="id_password" type="password">
+                        </div>
+                        <span><small>还未注册?</small><a href="/register/?from_page={{ request.GET.from_page }}"><small>注册</small></a></span>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="#" class="pull_left"><small>忘记密码</small></a>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3">
+                                <input id="submit" value="登录" class="btn btn-primary" type="submit" disabled="disabled">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+<script src="{% static 'js/login.js' %}"></script>
+{% endblock %}

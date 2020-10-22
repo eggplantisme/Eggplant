@@ -1,0 +1,57 @@
+.circles {
+  position: relative;
+  margin: 50px;
+  width: 200px;
+  height: 200px;
+}
+
+.circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: black;
+}
+@keyframes k {
+  from {
+    opacity: 1;
+    width: 20px;
+    height: 20px;
+  }
+
+  to {
+    opacity: 0;
+    width: 5px;
+    height: 5px;
+  }
+}
+.circle1 {
+  animation: k 1s ease 0s alternate infinite;
+}
+
+.circle2 {
+  animation: k 1s ease 0.2s alternate infinite;
+}
+
+.circle3 {
+  animation: k 1s ease 0.4s alternate infinite;
+}
+
+.circle4 {
+  animation: k 1s ease 0.6s alternate infinite;
+}
+
+.circle5 {
+  animation: k 1s ease 0.8s alternate infinite;
+}
+
+.circle6 {
+  animation: k 1s ease 1.0s alternate infinite;
+}
+
+.circle7 {
+  animation: k 1s ease 1.2s alternate infinite;
+}
+.circle8 {
+  animation: k 1s ease 1.4s alternate infinite;
+}

@@ -1,0 +1,27 @@
+td {
+    border: none;
+    height: 30px;
+}
+img {
+    width: 40px;
+    height: 40px;
+}
+.site-wrapper-inner {
+  background: white url("../images/about/background.jpg") no-repeat;
+}
+
+
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 20px;
+  height:
+}
+.inner.cover {
+    padding: 40px 0 20px 0;
+    height: -webkit-fill-available;
+}
+

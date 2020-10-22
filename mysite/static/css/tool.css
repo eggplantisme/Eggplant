@@ -1,0 +1,28 @@
+
+td {
+    border: none;
+    height: 30px;
+}
+img {
+    width: 50px;
+    height: 50px;
+}
+
+.site-wrapper-inner {
+  background: black url("../images/tool/background.jpg") no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 20px;
+  height:
+}
+.inner.cover {
+    padding: 40px 0 20px 0;
+    height: -webkit-fill-available;
+}
