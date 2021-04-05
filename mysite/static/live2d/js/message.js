@@ -54,18 +54,22 @@ if(!norunFlag){
             success: function (result){
                 $.each(result.mouseover, function (index, tips){
                     $(tips.selector).mouseover(function (){
-                        var text = tips.text;
-                        if(Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1)-1];
-                        text = text.renderTip({text: $(this).text()});
-                        showMessage(text, 3000);
+                        if ($('#live_statu_val').val() == "0") {
+                            var text = tips.text;
+                            if(Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1)-1];
+                            text = text.renderTip({text: $(this).text()});
+                            showMessage(text, 3000);
+                        }
                     });
                 });
                 $.each(result.click, function (index, tips){
                     $(tips.selector).click(function (){
-                        var text = tips.text;
-                        if(Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1)-1];
-                        text = text.renderTip({text: $(this).text()});
-                        showMessage(text, 3000);
+                        if ($('#live_statu_val').val() == "0") {
+                            var text = tips.text;
+                            if(Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1)-1];
+                            text = text.renderTip({text: $(this).text()});
+                            showMessage(text, 3000);
+                        }
                     });
                 });
             }
@@ -205,10 +209,10 @@ if(!norunFlag){
 			$('#AIuserText').val("");
 		});
 		$("body").keydown(function() {
-      if (event.keyCode == "13" && $('#live_statu_val').val() == "1") {//keyCode=13是回车键
-        $('#talk_send').click();
-      }
-    });
+            if (event.keyCode == "13" && $('#live_statu_val').val() == "1") {//keyCode=13是回车键
+                $('#talk_send').click();
+            }
+        });
 
 		/* 换装 */
 		var current_suit = 'seifuku.model.json';
@@ -254,7 +258,6 @@ if(!norunFlag){
             }
             return cookieValue;
         }
-
         function csrfSafeMethod(method) {
             // these HTTP methods do not require CSRF protection
             return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -267,40 +270,83 @@ if(!norunFlag){
                 }
             }
         });
-        // 获取音乐列表
-        var music_list, music_list_length, music_name;
-		music_list = $.ajax({
-            type: 'POST',
-            url: `http://${home_Path}/music/`,
-            success: function() {
-                console.log('music_list',music_list);
-                console.log('music_list_length', music_list.responseJSON["length"]);
-                music_list_length = music_list.responseJSON.length;
-                music_name = music_list.responseJSON[Math.floor(Math.random() * music_list_length + 1)-1];
-                $('#live2d_bgm').attr('src', `${static_Path}music/${music_name}`);
-            }
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            fixed: true,
+            listMaxHeight: '250px',  // 设置列表最大高度，需要加px
+            lrcType: 3
         });
+        var isLoaded = false;
         $('#musicButton').on('click',function(){
-            if($('#musicButton').hasClass('play')){
-                $('#live2d_bgm')[0].pause();
+            if($('#aplayer').css("display") == 'none') {
+                $('#aplayer').show()
+                showMessage(`打开了播放器`, 5000);
+                if (isLoaded == false) {
+                    // 获取音乐列表
+                    var music_list, music_list_length, music_name;
+                    music_list = $.ajax({
+                        type: 'POST',
+                        url: `http://${home_Path}/music/`,
+                        success: function() {
+                            console.log('music_list',music_list);
+                            console.log('music_list_length', music_list.responseJSON["length"]);
+                            music_list_length = music_list.responseJSON.length;
+                            music_names = music_list.responseJSON;
+                            for (i in music_names) {
+                                if (music_names[i].split('.').pop() == 'mp3') {
+                                    music_name = music_names[i];
+                                    console.log('music',music_name);
+                                    split_music_name = music_name.split('.');
+                                    suffix = split_music_name.pop();
+                                    name = split_music_name.join(".");
+                                    ap.list.add([{
+                                        name: name,
+                                        artist: name.split('-')[0],
+                                        url: `${static_Path}music/${music_name}`,
+                                        cover: `${static_Path}music/${name}.jpg`,
+                                        lrc: `${static_Path}music/${name}.lrc`,
+                                    }]);
+                                }
+                            }
+                            ap.play();
+                            $('#musicButton').addClass('play');
+                        }
+                    });
+                    isLoaded = true;
+                } else {
+                    ap.play();
+                }
+                $("body").keydown(function() {
+                    if (event.keyCode == "32" && $('#aplayer').css("display") != 'none') {//keyCode=32是空格键
+                        ap.toggle();
+                    }
+                });
+            } else {
+                $('#aplayer').hide()
+                showMessage(`关闭了播放器`, 5000);
+                ap.pause();
                 $('#musicButton').removeClass('play');
-            }else{
-                $('#live2d_bgm')[0].play();
-                $('#musicButton').addClass('play');
-                showMessage(`正在播放${music_name}`, 5000);
             }
-            $('#live2d_bgm').bind('ended',function () {
-               $('#musicButton').removeClass('play');
-               music_name = music_list.responseJSON[Math.floor(Math.random() * music_list_length + 1)-1];
-               $('#live2d_bgm').attr('src', `${static_Path}music/${music_name}`);
-            });
+//            if($('#musicButton').hasClass('play')){
+//                $('#live2d_bgm')[0].pause();
+//                $('#musicButton').removeClass('play');
+//            }else{
+//                $('#live2d_bgm')[0].play();
+//                $('#musicButton').addClass('play');
+//                showMessage(`正在播放${music_name}`, 5000);
+//            }
+//            $('#live2d_bgm').bind('ended',function () {
+//               $('#musicButton').removeClass('play');
+//               music_name = music_list.responseJSON[Math.floor(Math.random() * music_list_length + 1)-1];
+//               $('#live2d_bgm').attr('src', `${static_Path}music/${music_name}`);
+//            });
         });
 		/* 移动 */
-		$(function() {
-            $( "#landlord" ).draggable({
-              scroll: false
-            });
-        });
+//		$(function() {
+//            $( "#landlord" ).draggable({
+//              scroll: false
+//            });
+//        });
     }
     initLive2D();
 };

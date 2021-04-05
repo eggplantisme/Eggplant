@@ -7,7 +7,7 @@ img {
     height: 40px;
 }
 .site-wrapper-inner {
-  background: white url("../images/about/background.jpg") no-repeat;
+  background: #333;
 }
 
 
@@ -25,3 +25,6 @@ img {
     height: -webkit-fill-available;
 }
 
+.top_buffer {
+    margin-top: 20px;
+}

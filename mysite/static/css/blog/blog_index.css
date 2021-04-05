@@ -1,5 +1,5 @@
 .site-wrapper-inner {
-  background: #333;
+  background-image: url('../../images/night_backgroud.jpg');
 }
 @media (min-width: 1200px) {
   .container {

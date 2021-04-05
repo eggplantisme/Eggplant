@@ -1,202 +1,212 @@
 {%extends "base.html" %}
 {% block css_js_reference %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/tool.css' %}" />
+{% endblock %}
+{% block head %}
+<li><a href="{% url 'index' %}">Home</a></li>
+<li><a href="{% url 'blog:index' %}">Blog</a></li>
+<li><a href="{% url 'image' %}">Image</a></li>
+<li  class="active"><a href="#">Tools</a></li>
+<li><a href="{% url 'about' %}">About</a></li>
 {% endblock %}
 {% block mainbody %}
 {% load static %}
-<div class="site-wrapper">
-
-    <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-            <div class="masthead clearfix">
-                <div class="inner">
-                    <h3 class="masthead-brand">Eggplant</h3>
-                    <nav>
-                        <ul class="nav masthead-nav">
-                            <li><a href="../#">Home</a></li>
-                            <li><a href="../blog/">Blog</a></li>
-                            <li  class="active"><a href="#">Tools</a></li>
-                            <li><a href="../about/">About</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-
-            <div class="inner cover" data-spy="scroll" data-target="#myScrollspy">
-                <!-- add tabs, each tab has different type links -->
-                <div class="row">
-                    <div class="col-sm-3" id="myScrollspy">
-                        <ul class="nav nav-pills nav-stacked " id="Tabs" data-spy="affix">
-                            <li class="active"><a href="#resource" data-toggle="pill">Resource</a></li>
-                            <li><a href="#tool" data-toggle="pill">Tool</a></li>
-                            <li><a href="#search" data-toggle="pill">Search</a></li>
-                            <li><a href="#api" data-toggle="pill">Api</a></li>
-                            <li><a href="#art" data-toggle="pill">Art</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-9">
-                        <div id="TabContent" class="tab-content">
-                            <div class="tab-pane fade in active" id="resource">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="https://www.stockio.com/">
-                                                <img src="{% static 'images/tool/stockio.ico'%}" alt="stockio">
-                                                </a>
-                                                <div class="caption">Stockio 免费图标</div></td>
-                                            <td><a href="https://www.easyicon.net/">
-                                                <img src="{% static 'images/tool/easyicon.svg'%}" alt="easyicon">
-                                                </a>
-                                                <div class="caption">easyicon 免费图标</div></td>
-                                            <td><a href="http://snap.stanford.edu/data/">
-                                                <img src="{% static 'images/tool/snap.gif'%}" alt="snap network data">
-                                                </a>
-                                                <div class="caption">SNAP 网络数据</div></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="http://vlado.fmf.uni-lj.si/pub/networks/data/default.htm">
-                                                <img src="{% static 'images/tool/pajek.ico'%}" alt="pajek network data">
-                                                </a>
-                                                <div class="caption">pajek 网络数据</div></td>
-                                            <td><a href="https://d-maps.com/index.php?lang=zh">
-                                                <img src="{% static 'images/tool/map.ico'%}" alt="maps">
-                                                </a>
-                                                <div class="caption">地图图片数据</div></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="tab-pane fade" id="tool">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="https://www.draw.io/">
-                                                <img src="{% static 'images/tool/drawio.png'%}" alt="drawio">
-                                                </a>
-                                                <div class="caption">UML 在线绘制</div></td>
-                                            <td><a href="http://coolaf.com/tool/port">
-                                                <img src="{% static 'images/tool/coolaf.ico'%}" alt="coolaf">
-                                                </a>
-                                                <div class="caption">国内ip端口扫描</div></td>
-                                            <td><a href="https://www.yougetsignal.com/tools/open-ports/">
-                                                <img src="{% static 'images/tool/open-ports.ico'%}" alt="open-ports">
-                                                </a>
-                                                <div class="caption">国外ip端口扫描</div></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="https://www.photopea.com/">
-                                                <img src="{% static 'images/tool/photopea.png'%}" alt="photopea">
-                                                </a>
-                                                <div class="caption">在线PS</div></td>
-                                            <td><a href="http://www.makepic.net/Tool/Image2ascii.html">
-                                                <img src="{% static 'images/tool/imageascii.ico'%}" alt="image2ascoo">
-                                                </a>
-                                                <div class="caption">图片转字符图片</div></td>
-                                            <td><a href="https://www.wolframalpha.com/">
-                                                <img src="{% static 'images/tool/wolframe.ico'%}" alt="wolframalpha">
-                                                </a>
-                                                <div class="caption">公式图形化</div></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="tab-pane fade" id="search">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="https://www.google.com">
-                                                <img src="{% static 'images/tool/google.svg'%}" alt="Google">
-                                                </a>
-                                                <div class="caption">Google</div></td>
-                                            <td><a href="https://www.baidu.com">
-                                                <img src="{% static 'images/tool/baidu.svg'%}" alt="Baidu">
-                                                </a>
-                                                <div class="caption">Baidu</div></td>
-                                            <td><a href="https://www.bing.com">
-                                                <img src="{% static 'images/tool/bing.svg'%}" alt="Bing">
-                                                </a>
-                                                <div class="caption">Bing</div></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="https://scholar.google.com/">
-                                                <img src="{% static 'images/tool/google-scholar.ico'%}" alt="GoogleScholar">
-                                                </a>
-                                                <div class="caption">Google Scholar</div></td>
-                                            <td><a href="https://www.anyknew.com/#/">
-                                                <img src="{% static 'images/tool/anyknew.png'%}" alt="anyknew">
-                                                </a>
-                                                <div class="caption">各大热榜资讯</div></td>
-                                            <td><a href="http://guozhivip.com/rank/index.html">
-                                                <img src="{% static 'images/tool/fruitjuice.ico'%}" alt="FruitJuice">
-                                                </a>
-                                                <div class="caption">果汁排行榜</div></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="tab-pane fade" id="api">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="https://devdocs.io/">
-                                                <img src="{% static 'images/tool/devdocs.ico'%}" alt="devdocs">
-                                                </a>
-                                                <div class="caption">一些语言与库的开发文档</div></td>
-                                            <td><a href="https://tensorflow.google.cn/">
-                                                <img src="{% static 'images/tool/tensorflow.png'%}" alt="tensorflow">
-                                                </a>
-                                                <div class="caption">tensorflow 开发文档</div></td>
-
-                                            <td><a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html">
-                                                <img src="{% static 'images/tool/python-cookbook.png'%}" alt="python-cookbook">
-                                                </a>
-                                                <div class="caption">Python Cookbook</div></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="https://networkx.github.io/documentation/stable/index.html">
-                                                <img src="{% static 'images/tool/networkx.png'%}" alt="networkx">
-                                                </a>
-                                                <div class="caption">Python networkx 库</div></td>
-                                            <td><a href="https://www.numpy.org.cn/">
-                                                <img src="{% static 'images/tool/numpy.ico'%}" alt="numpy">
-                                                </a>
-                                                <div class="caption">numpy中文文档</div></td>
-                                            <td><a href="https://www.faceplusplus.com.cn/">
-                                                <img src="{% static 'images/tool/face++.ico'%}" alt="face++">
-                                                </a>
-                                                <div class="caption">图片识别检测接口</div></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="tab-pane fade" id="art">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="http://www.sketchswap.com/">
-                                                    <img src="{% static 'images/tool/sketchswap.png'%}" alt="sketchswap">
-                                                    </a>
-                                                    <div class="caption">一画换一画</div></td>
-                                            <td><a href="http://weavesilk.com/">
-                                                    <img src="{% static 'images/tool/silk.png'%}" alt="weavesilk">
-                                                    </a>
-                                                    <div class="caption">对称之美</div></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+<div class="inner cover" data-spy="scroll" data-target="#myScrollspy">
+    <!-- add tabs, each tab has different type links -->
+    <div class="row">
+        <div class="col-sm-3" id="myScrollspy">
+            <ul class="nav nav-pills nav-stacked " id="Tabs" data-spy="affix">
+                <li class="active"><a href="#resource" data-toggle="pill">Resource</a></li>
+                <li><a href="#tool" data-toggle="pill">Tool</a></li>
+                <li><a href="#search" data-toggle="pill">Search</a></li>
+                <li><a href="#api" data-toggle="pill">Api</a></li>
+                <li><a href="#art" data-toggle="pill">Art</a></li>
+            </ul>
         </div>
+        <div class="col-sm-9">
+            <div id="TabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="resource">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><a href="https://www.stockio.com/" target="_blank">
+                                    <img src="{% static 'images/tool/stockio.ico'%}" alt="stockio">
+                                    </a>
+                                    <div class="caption">Stockio 免费图标</div></td>
+                                <td><a href="https://www.easyicon.net/" target="_blank">
+                                    <img src="{% static 'images/tool/easyicon.svg'%}" alt="easyicon">
+                                    </a>
+                                    <div class="caption">easyicon 免费图标</div></td>
+                                <td><a href="http://snap.stanford.edu/data/" target="_blank">
+                                    <img src="{% static 'images/tool/snap.gif'%}" alt="snap network data">
+                                    </a>
+                                    <div class="caption">SNAP 网络数据</div></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://vlado.fmf.uni-lj.si/pub/networks/data/default.htm" target="_blank">
+                                    <img src="{% static 'images/tool/pajek.ico'%}" alt="pajek network data">
+                                    </a>
+                                    <div class="caption">pajek 网络数据</div></td>
+                                <td><a href="https://d-maps.com/index.php?lang=zh" target="_blank">
+                                    <img src="{% static 'images/tool/map.ico'%}" alt="maps">
+                                    </a>
+                                    <div class="caption">地图图片数据</div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="tool">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><a href="https://www.draw.io/" target="_blank">
+                                    <img src="{% static 'images/tool/drawio.png'%}" alt="drawio">
+                                    </a>
+                                    <div class="caption">UML 在线绘制</div></td>
+                                <td><a href="http://coolaf.com/tool/port" target="_blank">
+                                    <img src="{% static 'images/tool/coolaf.ico'%}" alt="coolaf">
+                                    </a>
+                                    <div class="caption">国内ip端口扫描</div></td>
+                                <td><a href="https://www.yougetsignal.com/tools/open-ports/" target="_blank">
+                                    <img src="{% static 'images/tool/open-ports.ico'%}" alt="open-ports">
+                                    </a>
+                                    <div class="caption">国外ip端口扫描</div></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.photopea.com/" target="_blank">
+                                    <img src="{% static 'images/tool/photopea.png'%}" alt="photopea">
+                                    </a>
+                                    <div class="caption">在线PS</div></td>
+                                <td><a href="http://www.makepic.net/Tool/Image2ascii.html" target="_blank">
+                                    <img src="{% static 'images/tool/imageascii.ico'%}" alt="image2ascoo">
+                                    </a>
+                                    <div class="caption">图片转字符图</div></td>
+                                <td><a href="https://www.wolframalpha.com/" target="_blank">
+                                    <img src="{% static 'images/tool/wolframe.ico'%}" alt="wolframalpha">
+                                    </a>
+                                    <div class="caption">公式图形化</div></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank">
+                                    <img src="{% static 'images/tool/latex.png'%}" alt="latex">
+                                    </a>
+                                    <div class="caption">latex符号</div></td>
 
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="search">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><a href="https://www.google.com" target="_blank">
+                                    <img src="{% static 'images/tool/google.svg'%}" alt="Google">
+                                    </a>
+                                    <div class="caption">Google</div></td>
+                                <td><a href="https://www.baidu.com" target="_blank">
+                                    <img src="{% static 'images/tool/baidu.svg'%}" alt="Baidu">
+                                    </a>
+                                    <div class="caption">Baidu</div></td>
+                                <td><a href="https://www.bing.com" target="_blank">
+                                    <img src="{% static 'images/tool/bing.svg'%}" alt="Bing">
+                                    </a>
+                                    <div class="caption">Bing</div></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://scholar.google.com/" target="_blank">
+                                    <img src="{% static 'images/tool/google-scholar.ico'%}" alt="GoogleScholar">
+                                    </a>
+                                    <div class="caption">Google Scholar</div></td>
+                                <td><a href="https://www.anyknew.com/#/" target="_blank">
+                                    <img src="{% static 'images/tool/anyknew.png'%}" alt="anyknew">
+                                    </a>
+                                    <div class="caption">各大热榜资讯</div></td>
+                                <td><a href="http://guozhivip.com/rank/index.html" target="_blank">
+                                    <img src="{% static 'images/tool/fruitjuice.ico'%}" alt="FruitJuice">
+                                    </a>
+                                    <div class="caption">果汁排行榜</div></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://jikipedia.com/" target="_blank">
+                                    <img src="{% static 'images/tool/chicken.png'%}" alt="小鸡词典">
+                                    </a>
+                                    <div class="caption">小鸡查梗</div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="api">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><a href="https://devdocs.io/" target="_blank">
+                                    <img src="{% static 'images/tool/devdocs.ico'%}" alt="devdocs">
+                                    </a>
+                                    <div class="caption">一些语言与库的开发文档</div></td>
+                                <td><a href="https://tensorflow.google.cn/" target="_blank">
+                                    <img src="{% static 'images/tool/tensorflow.png'%}" alt="tensorflow">
+                                    </a>
+                                    <div class="caption">tensorflow 开发文档</div></td>
+
+                                <td><a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html" target="_blank">
+                                    <img src="{% static 'images/tool/python-cookbook.png'%}" alt="python-cookbook">
+                                    </a>
+                                    <div class="caption">Python Cookbook</div></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://networkx.github.io/documentation/stable/index.html" target="_blank">
+                                    <img src="{% static 'images/tool/networkx.png'%}" alt="networkx">
+                                    </a>
+                                    <div class="caption">Python networkx 库</div></td>
+                                <td><a href="https://www.numpy.org.cn/" target="_blank">
+                                    <img src="{% static 'images/tool/numpy.ico'%}" alt="numpy">
+                                    </a>
+                                    <div class="caption">numpy中文文档</div></td>
+                                <td><a href="https://www.faceplusplus.com.cn/" target="_blank">
+                                    <img src="{% static 'images/tool/face++.ico'%}" alt="face++">
+                                    </a>
+                                    <div class="caption">图片识别检测接口</div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="art">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><a href="http://www.sketchswap.com/" target="_blank">
+                                        <img src="{% static 'images/tool/sketchswap.png'%}" alt="sketchswap">
+                                        </a>
+                                        <div class="caption">一画换一画</div></td>
+                                <td><a href="http://weavesilk.com/" target="_blank">
+                                        <img src="{% static 'images/tool/silk.png'%}" alt="weavesilk">
+                                        </a>
+                                        <div class="caption">对称之美</div></td>
+                                <td><a href="https://paveldogreat.github.io/WebGL-Fluid-Simulation/" target="_blank">
+                                        <img src="{% static 'images/tool/fluid_sim.png'%}" alt="WebGL-Fluid-Simulation">
+                                        </a>
+                                        <div class="caption">流光</div></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://www.spielzeugz.de/html5/liquid-particles-3D/" target="_blank">
+                                        <img src="{% static 'images/tool/partical_fluid.png'%}" alt="liquid-particles-3D">
+                                        </a>
+                                        <div class="caption">液体粒子</div></td>
+                                <td><a href="https://photomosh.com/" target="_blank">
+                                    <img src="{% static 'images/tool/photomosh.jpg'%}" alt="photomosh">
+                                    </a>
+                                    <div class="caption">魔改图片</div></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>
 {% endblock %}

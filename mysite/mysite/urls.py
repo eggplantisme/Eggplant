@@ -21,13 +21,16 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('index/', views.index),
+
     path('talk/', views.talk, name='talk'),
     path('music/', views.music, name='music'),
+    path('image/', views.image, name='image'),
     path('about/', views.about, name='about'),
     path('login/', views.login_view, name="login"),
     path('register/', views.register_view, name="register"),
     path('logout/', views.logout_view, name="logout"),
-    path('blog/', include('blog.urls')),  # TODO blog
+
+    path('blog/', include('blog.urls')),
     path('tool/', include('tool.urls')),
     path('comment/', include('comment.urls')),
     path('chat/', include('chat.urls')),

@@ -17,6 +17,11 @@ def index(request):
     return render(request, 'index.html', context)
 
 
+def image(request):
+    context = dict()
+    return render(request, 'image.html', context)
+
+
 def about(request):
     context = dict()
     return render(request, 'about.html', context)
@@ -30,6 +35,8 @@ def music(request):
         else:
             music_dir = os.getcwd() + "/static/music"
         return HttpResponse(json.dumps(os.listdir(music_dir)), content_type="application/json")
+    elif request.method == 'GET':
+        return render(request, 'music.html', dict())
 
 
 @ensure_csrf_cookie

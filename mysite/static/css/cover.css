@@ -2,7 +2,7 @@
  * Background
  */
  .site-wrapper {
-    background-image: url('../images/background.jpg');
+    background-image: url('../../images/background.jpg');
  }
  #background {
     position: absolute;

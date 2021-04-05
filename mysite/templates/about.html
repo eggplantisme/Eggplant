@@ -1,77 +1,70 @@
 {%extends "base.html" %}
 {% block css_js_reference %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}" />
+{% endblock %}
+
+{% block head %}
+<li><a href="{% url 'index' %}">Home</a></li>
+<li><a href="{% url 'blog:index' %}">Blog</a></li>
+<li><a href="{% url 'image' %}">Image</a></li>
+<li><a href="{% url 'tool:tool' %}">Tools</a></li>
+<li class="active"><a href="#">About</a></li>
 {% endblock %}
 {% block mainbody %}
 {% load static %}
-<div class="site-wrapper">
-
-    <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-            <div class="masthead clearfix">
-                <div class="inner">
-                    <h3 class="masthead-brand">Eggplant</h3>
-                    <nav>
-                        <ul class="nav masthead-nav">
-                            <li><a href="../#">Home</a></li>
-                            <li><a href="../blog/">Blog</a></li>
-                            <li><a href="../tool/">Tools</a></li>
-                            <li class="active"><a href="#">About</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-
-            <div class="inner cover">
-                <div class="col-sm-9">
-                    <h2>About Me</h2>
-                    <p class="text-center">
-                        一个<br>
-                        会在考试前搞副业<br>
-                        想瘦却无法瘦下来<br>
-                        搞不懂科研就开始放飞自我<br>
-                        的肥宅的自我救赎<br>
-                        还没有工作但是也不想工作，不喜欢人多的地方，日常自闭<br>
-                        朋友很少，圈子很窄<br>
-                        So<br>
-                        创建一个自己的小站<br>
-                        获得增进技术的快感<br>
-                        保留一下美好的时光<br>
-                        （没准还会写写小说，虽然我从小就没什么文采）<br>
-                        网站不定时开发ing<br>
-                    </p>
-                </div>
-                <div class="col-sm-3">
-                    <div class="row">
-                        <h3>Eggplant</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4 img-circle">
-                            <a href="https://space.bilibili.com/30482063">
-                                <img src="{% static 'images/about/bilibili.svg'%}" alt="Bilibili">
-                            </a>
-                        </div>
-                        <div class="col-sm-4 img-circle">
-                            <a href="https://www.weibo.com/5559048226/profile?topnav=1&wvr=6&is_all=1">
-                                <img src="{% static 'images/about/weibo.svg'%}" alt="Weibo">
-                            </a>
-                        </div>
-                        <div class="col-sm-4 img-circle">
-                            <a href="https://user.qzone.qq.com/2439166979/main">
-                                <img src="{% static 'images/about/qq.svg'%}" alt="Q_Space">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
+<div class="inner cover">
+    <div class="col-sm-9">
+        <h2>About Me</h2>
+        <p class="text-center">
+            一个<br>
+            会在考试前搞副业<br>
+            想瘦却无法瘦下来<br>
+            搞不懂科研就开始放飞自我<br>
+            的肥宅的自我救赎<br>
+            还没有工作但是也不想工作，不喜欢人多的地方，日常自闭<br>
+            朋友很少，圈子很窄<br>
+            So<br>
+            创建一个自己的小站<br>
+            获得增进技术的快感<br>
+            保留一下美好的时光<br>
+            （没准还会写写小说，虽然我从小就没什么文采）<br>
+            网站不定时开发ing<br>
+        </p>
     </div>
-
+    <div class="col-sm-3">
+        <div class="row">
+            <h3>Eggplant</h3>
+        </div>
+        <div class="row top_buffer">
+            <div class="col-sm-4 img-circle">
+                <a href="https://space.bilibili.com/30482063">
+                    <img src="{% static 'images/about/bilibili.svg'%}" alt="Bilibili">
+                </a>
+            </div>
+            <div class="col-sm-4 img-circle">
+                <a href="https://www.weibo.com/5559048226/profile?topnav=1&wvr=6&is_all=1">
+                    <img src="{% static 'images/about/weibo.svg'%}" alt="Weibo">
+                </a>
+            </div>
+            <div class="col-sm-4 img-circle">
+                <a href="https://user.qzone.qq.com/2439166979/main">
+                    <img src="{% static 'images/about/qq.svg'%}" alt="QQ空间">
+                </a>
+            </div>
+        </div>
+        <div class="row top_buffer">
+            <div class="col-sm-4 img-circle">
+                <a href="https://www.cnblogs.com/eggplant-is-me/">
+                    <img src="{% static 'images/about/cnblog.svg'%}" alt="博客园">
+                </a>
+            </div>
+            <div class="col-sm-4 img-circle">
+            </div>
+            <div class="col-sm-4 img-circle">
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
